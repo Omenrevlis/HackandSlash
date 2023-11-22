@@ -1,0 +1,10 @@
+﻿{
+    "profiles": {
+      "WorldClock (Package)": {
+        "commandName": "MsixPackage"
+      },
+      "WorldClock (Unpackaged)": {
+        "commandName": "Project"
+      }
+    }
+}
