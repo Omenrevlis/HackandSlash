@@ -3,7 +3,7 @@
 namespace WorldClock.Contracts.Models;
 public interface IFontIconModel
 {
-    string HexCode
+    string Code
     {
         get;
         set;

@@ -1,4 +1,5 @@
-﻿using CommunityToolkit.Mvvm.ComponentModel;
+﻿using System.Globalization;
+using CommunityToolkit.Mvvm.ComponentModel;
 using WorldClock.Contracts.Models;
 
 namespace WorldClock.Models;
@@ -6,12 +7,17 @@ namespace WorldClock.Models;
 public partial class FontIconModel : IFontIconModel
 {
     [ObservableProperty]
-    private string _HexCode;
+    private string _Code;
 
     [ObservableProperty]
     private string _Name;
 
-    [ObservableProperty]
-    private char _FontCode;
-
+    public char FontCode
+    {
+        get
+        {
+            var iconChar = (char)int.Parse(Code, NumberStyles.HexNumber);
+            return iconChar;
+        }
+    }
 }

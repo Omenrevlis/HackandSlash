@@ -25,6 +25,7 @@ public class FontListService
             var iconDataStream = await GetAssetHelper.GetAssetStream("Assets", "IconsData.json");
             if (iconDataStream != null)
             {
+
                 var options = new JsonSerializerOptions(JsonSerializerDefaults.General);
 
                 var jsonList = await JsonSerializer.DeserializeAsync<List<FontIconModel>>(iconDataStream, options);
