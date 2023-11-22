@@ -27,9 +27,12 @@ public sealed partial class MainPage : Page
     }
 
     private void ViewModel_IconDataLoaded(object? sender, EventArgs e)
-    {   
-        //here so you can see it happen. 
-        lvIcons.DataContext = ViewModel.FontIconData;
+    {
+        foreach (var item in ViewModel.FontIconData)
+        {
+            lvIcons.Items.Add(item);
+        }
+        //lvIcons.DataContext = ViewModel.FontIconData;
     }
 
 }

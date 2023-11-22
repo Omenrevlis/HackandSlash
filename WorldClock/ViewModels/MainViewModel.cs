@@ -26,7 +26,7 @@ public partial class MainViewModel : ObservableRecipient
         {
             var service = new FontListService();
             var data = await service.LoadIconData();
-            FontIconData.AddRange(data.ToList());
+            FontIconData.AddRange(data);
             OnIconDataLoaded();
         }catch (Exception ex) 
         { 
