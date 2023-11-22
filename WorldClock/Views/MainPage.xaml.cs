@@ -1,11 +1,8 @@
 ﻿using CommunityToolkit.Mvvm.ComponentModel;
 using Microsoft.UI.Xaml.Controls;
-using WorldClock.Models;
 using WorldClock.ViewModels;
-using Microsoft.UI.Xaml;
-using System.ComponentModel;
-using System.Runtime.CompilerServices;
-using WorldClock.Services;
+using WorldClock.Contracts.Models;
+using WorldClock.Models;
 
 namespace WorldClock.Views;
 
@@ -28,11 +25,28 @@ public sealed partial class MainPage : Page
 
     private void ViewModel_IconDataLoaded(object? sender, EventArgs e)
     {
-        foreach (var item in ViewModel.FontIconData)
-        {
-            lvIcons.Items.Add(item);
-        }
+        //foreach (var item in ViewModel.FontIconData)
+        //{
+        //    lvIcons.Items.Add(item);
+        //    exIcons.Items.Add(item);
+
+        //}
+        //lvIcons.ItemsSource = ViewModel.FontIconData;
+        //exIcons.ItemsSource = ViewModel.FontIconData;
         //lvIcons.DataContext = ViewModel.FontIconData;
+        //lvIcons.UpdateLayout();
     }
+
+    private void lstexpander_SelectionChanged(object sender, SelectionChangedEventArgs e)
+    {
+        var item = lstexpander.SelectedItem as FontIconModel;
+        exSelectedIcon.Glyph = item.FontCode.ToString();
+    }
+
+
+
+   
+   
+
 
 }

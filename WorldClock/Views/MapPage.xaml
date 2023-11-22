@@ -4,9 +4,149 @@
     xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
     xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
     xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
-    mc:Ignorable="d">
+    xmlns:md="using:WorldClock.Models"
+    mc:Ignorable="d" >
+    
+    <Page.Resources>
+
+        <DataTemplate x:Key="lvHeaderTemplate">
+
+            <Grid>
+                <Grid.ColumnDefinitions>
+                    <ColumnDefinition Width="50" />
+                    <ColumnDefinition Width="310"/>
+                </Grid.ColumnDefinitions>
+                <Border Grid.Column="0" BorderBrush="{ThemeResource ControlElevationBorderBrush}" Width="50" BorderThickness="0,0,0,1" >
+                    <TextBlock Text="Icon" Margin="10,0,0,0" HorizontalAlignment="center" Width="40" Style="{StaticResource BodyStrongTextBlockStyle}"  />
+                </Border>
+                <Border Grid.Column="1" BorderBrush="{ThemeResource ControlElevationBorderBrush}" BorderThickness="0,0,0,1"  >
+                    <TextBlock Text="Name" Margin="17,0,0,0" Width="310"  Style="{StaticResource BodyStrongTextBlockStyle}"  />
+                </Border>
+            </Grid>
+        </DataTemplate>
+        <DataTemplate x:Key="lvItemTemplate" x:DataType="md:FontIconModel">
+            <StackPanel>
+                <Grid>
+                    <Grid.ColumnDefinitions>
+                        <ColumnDefinition Width="50"/>
+                        <ColumnDefinition Width="300"/>
+                    </Grid.ColumnDefinitions>
+                    <FontIcon Grid.Column="0"  Glyph="{x:Bind FontCode, Mode=OneWay }" HorizontalAlignment="left" />
+                    <TextBlock Grid.Column="1" Text="{x:Bind Name, Mode=OneWay}" />
+                </Grid>
+            </StackPanel>
+        </DataTemplate>
+        <SolidColorBrush x:Key="ListViewItemBackgroundSelected" Color="LightSlateGray" />
+        <SolidColorBrush x:Key="ListViewItemBackgroundSelectedPointerOver" Color="BurlyWood" />
+    </Page.Resources>
 
     <Grid x:Name="ContentArea">
-        
+        <Grid.ColumnDefinitions>
+            <ColumnDefinition Width="500"/>
+            <ColumnDefinition Width="500"/>
+            <ColumnDefinition Width="500"/>
+            <ColumnDefinition Width="500"/>
+        </Grid.ColumnDefinitions>
+        <Grid.RowDefinitions>
+            <RowDefinition Height="450" />
+            <RowDefinition Height="*" />
+        </Grid.RowDefinitions>
+
+        <StackPanel Background="AliceBlue" Grid.Column="0" Grid.Row="0">
+            <TextBlock>In a Grid</TextBlock>
+            <Grid>
+                <ListView x:Name="lstGrid" 
+                  Width="400" Height="400"
+                  BorderBrush="{ThemeResource SolidBackgroundFillColorSecondaryBrush}"       
+                  HeaderTemplate="{StaticResource lvHeaderTemplate}"
+                  ItemTemplate="{StaticResource lvItemTemplate}" 
+                  DataContext= "{x:Bind ViewModel.FontIconData}"/>
+            </Grid>
+        </StackPanel>
+
+        <StackPanel Background="AliceBlue" Grid.Column="0" Grid.Row="1">
+            <TextBlock>In a Border</TextBlock>
+            <Border>
+                <ListView x:Name="lstBd" 
+                  Width="400" Height="400"
+                  BorderBrush="{ThemeResource SolidBackgroundFillColorSecondaryBrush}"       
+                  HeaderTemplate="{StaticResource lvHeaderTemplate}"
+                  ItemTemplate="{StaticResource lvItemTemplate}" 
+                  DataContext= "{x:Bind ViewModel.FontIconData}"/>
+            </Border>
+        </StackPanel>
+
+        <StackPanel Background="AliceBlue" Grid.Column="1" Grid.Row="0">
+            <TextBlock>In a Expander</TextBlock>
+            <Expander>
+                <ListView x:Name="lstexpander" 
+                  Width="400" Height="400"
+                  BorderBrush="{ThemeResource SolidBackgroundFillColorSecondaryBrush}"       
+                  HeaderTemplate="{StaticResource lvHeaderTemplate}"
+                  ItemTemplate="{StaticResource lvItemTemplate}" 
+                  DataContext= "{x:Bind ViewModel.FontIconData}"/>
+            </Expander>
+        </StackPanel>
+
+        <StackPanel Background="AliceBlue" Grid.Column="1" Grid.Row="1">
+            <TextBlock>In a RelativePanel</TextBlock>
+            <RelativePanel>
+                <ListView x:Name="lstRealitvePanel" 
+                 Width="400" Height="400"
+                 BorderBrush="{ThemeResource SolidBackgroundFillColorSecondaryBrush}"       
+                 HeaderTemplate="{StaticResource lvHeaderTemplate}"
+                 ItemTemplate="{StaticResource lvItemTemplate}" 
+                 DataContext= "{x:Bind ViewModel.FontIconData}"/>
+            </RelativePanel>
+        </StackPanel>
+
+        <StackPanel Background="AliceBlue" Grid.Column="2" Grid.Row="0">
+            <TextBlock>In a StackPanel</TextBlock>
+            <StackPanel>
+                <ListView x:Name="lstStackPanel" 
+                 Width="400" Height="400"
+                 BorderBrush="{ThemeResource SolidBackgroundFillColorSecondaryBrush}"       
+                 HeaderTemplate="{StaticResource lvHeaderTemplate}"
+                 ItemTemplate="{StaticResource lvItemTemplate}" 
+                 DataContext= "{x:Bind ViewModel.FontIconData}"/>
+            </StackPanel>
+        </StackPanel>
+
+        <StackPanel Background="AliceBlue" Grid.Column="2" Grid.Row="1">
+            <TextBlock>In a VariableSizedWrapGrid</TextBlock>
+            <VariableSizedWrapGrid>
+                <ListView x:Name="lstVariableSizedWrapGrid" 
+                 Width="400" Height="400"
+                 BorderBrush="{ThemeResource SolidBackgroundFillColorSecondaryBrush}"       
+                 HeaderTemplate="{StaticResource lvHeaderTemplate}"
+                 ItemTemplate="{StaticResource lvItemTemplate}" 
+                 DataContext= "{x:Bind ViewModel.FontIconData}"/>
+            </VariableSizedWrapGrid>
+        </StackPanel>
+
+        <StackPanel Background="AliceBlue" Grid.Column="3" Grid.Row="0">
+            <TextBlock>In a ViewBox</TextBlock>
+            <Viewbox>
+                <ListView x:Name="lstViewBox" 
+                 Width="400" Height="400"
+                 BorderBrush="{ThemeResource SolidBackgroundFillColorSecondaryBrush}"       
+                 HeaderTemplate="{StaticResource lvHeaderTemplate}"
+                 ItemTemplate="{StaticResource lvItemTemplate}" 
+                 DataContext= "{x:Bind ViewModel.FontIconData}"/>
+            </Viewbox>
+        </StackPanel>
+
+        <StackPanel Background="AliceBlue" Grid.Column="3" Grid.Row="1">
+            <TextBlock>In a RelativePanel</TextBlock>
+            <RelativePanel>
+                <ListView x:Name="lstRelativePanel" 
+                 Width="400" Height="400"
+                 BorderBrush="{ThemeResource SolidBackgroundFillColorSecondaryBrush}"       
+                 HeaderTemplate="{StaticResource lvHeaderTemplate}"
+                 ItemTemplate="{StaticResource lvItemTemplate}" 
+                 DataContext= "{x:Bind ViewModel.FontIconData}"/>
+            </RelativePanel>
+        </StackPanel>
+
     </Grid>
 </Page>
